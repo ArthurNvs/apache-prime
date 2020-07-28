@@ -11,7 +11,7 @@ function Footer() {
       <p>
         Arthur Neves (theApache) made with tea, chocolats and love <span role="img" aria-label="tea">☕︎</span> <br />
         {' '}
-        <a href="https://www.alura.com.br/">
+        <a href="https://www.alura.com.br/imersao-react/">
           #ImersãoReact
         </a>
       </p>
