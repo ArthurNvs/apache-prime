@@ -9,10 +9,10 @@ function Footer() {
         <img className="Logo" src={Logo} alt="ApachePrime logo" />
       </a>
       <p>
-        Projeto de Arthur Neves (theApache) feito com chá, chocolate e amor (: <br />
+        Arthur Neves (theApache) made with tea, chocolats and love <span role="img" aria-label="tea">☕︎</span> <br />
         {' '}
         <a href="https://www.alura.com.br/">
-          #Imersão React da Alura
+          #ImersãoReact
         </a>
       </p>
     </FooterBase>
