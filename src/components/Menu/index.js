@@ -8,7 +8,7 @@ function Menu() {
     return (
         <nav className="Menu">
             <Link to="/">
-                <img clLinkssName="Logo" src={Logo} alt="ApachePrime logo" />
+                <img className="Logo" src={Logo} alt="ApachePrime logo" />
             </Link>
 
             <Button as={Link} className="ButtonLink" to="/cadastro/video">
