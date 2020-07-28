@@ -1,3 +1,8 @@
+## APACHE PRIME
+Projeto desenvolvido na #ImersãoReact promovida pela Alura.
+Consiste em uma aplicação web feita inteiramente em React que imita as principais funcionalidades e interface da Netflix.
+
+-----
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
