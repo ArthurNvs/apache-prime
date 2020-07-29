@@ -47,7 +47,7 @@
       "titulo": "Em Alta",
       "cor": "#00C86F",
       "link_extra": {
-        "text": "Back End na Alura",
+
         "url": "https://www.alura.com.br/cursos-online-programacao"
       },
       "videos": [
@@ -66,6 +66,10 @@
         {
           "titulo": "Feitiço do Tempo",
           "url": "https://www.youtube.com/watch?v=zi8d69P9NvI"
+        },
+        {
+          "titulo": "Bastardos Inglórios",
+          "url": "https://www.youtube.com/watch?v=w1O5LThfp7w"
         }
       ]
     },
@@ -73,7 +77,6 @@
       "titulo": "Games",
       "cor": "purple",
       "link_extra": {
-        "text": "Formação de Jogos na Alura",
         "url": "https://www.alura.com.br/formacao-jogos-unity"
       },
       "videos": [
