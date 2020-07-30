@@ -15,7 +15,6 @@ function Erro404(){
 
         </PageTemplate>
     );
-
 }
 
 export default Erro404;
