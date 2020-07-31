@@ -1,0 +1,16 @@
+{
+  "categorias": [
+      {
+          "id": 1,
+          "nome": "Filmes",
+          "descricao": "Os melhores filmes",
+          "cor": "#cbd1ff"
+      },
+      {
+          "id": 2,
+          "nome": "Jogos",
+          "descricao": "Os melhores jogos",
+          "cor": "#cbd1ff"
+      }
+  ]
+}

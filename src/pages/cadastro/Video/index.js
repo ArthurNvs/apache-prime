@@ -1,8 +1,6 @@
 import React from 'react';
 import PageTemplate from '../../../components/PageTemplate';
 import { Link } from 'react-router-dom';
-import Button from '../../../components/Button';
-
 
 function CadastroVideo() {
     return (
@@ -33,13 +31,13 @@ function CadastroVideo() {
             </form>
             <br /><br />
 
-            <Button as={Link} className="ButtonLink" to="/">
+            {/* <Button as={Link} className="ButtonLink" to="/">
                 Salvar
             </Button>
 
             <Button as={Link} className="ButtonLink" to="/">
                 Limpar
-            </Button>
+            </Button> */}
 
             <br /><br />
 
