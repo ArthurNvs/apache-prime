@@ -29,8 +29,8 @@ function CadastroCategoria() {
   }
 
   useEffect(() => {
-    if(window.location.href.includes('localhost')) {
-      const URL = 'http://localhost:8080/categorias'; 
+
+      const URL = window.location.href.includes('localhost') ? 'https://apache-prime.herokuapp.com/categorias' : 'http://localhost:8080/categorias'; 
       fetch(URL)
        .then(async (respostaDoServer) =>{
         if(respostaDoServer.ok) {
@@ -40,7 +40,7 @@ function CadastroCategoria() {
         }
         throw new Error('Não foi possível pegar os dados');
        })
-    }    
+       
   }, []);
 
   return (
@@ -99,20 +99,20 @@ function CadastroCategoria() {
           </div>
       )}
 
-      <ul>
+      <td>
         {categorias.map((categoria, indice) => {
           if (!categoria.nome) { return []; }
 
           return (
-            <li key={`${categoria.nome}`}>
+            <tr key={`${categoria.nome}`}>
               {categoria.nome}
               {' -- '}
               {categoria.descricao}
-            </li>
+            </tr>
             
           );
         })}
-      </ul>
+      </td>
 
       <br />
       <br />
