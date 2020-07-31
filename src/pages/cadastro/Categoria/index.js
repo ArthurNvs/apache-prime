@@ -3,51 +3,42 @@ import { Link } from 'react-router-dom';
 import PageTemplate from '../../../components/PageTemplate';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
+import useForm from '../../../hooks/useForm';
+
 
 function CadastroCategoria() {
   const initialValues = {
-    nome: '',
+    titulo: '',
     descricao: '',
     cor: '',
   };
 
+  const { handleChange, values, clearForm } = useForm(initialValues);
+
   const [categorias, setCategorias] = useState([]);
-  const [values, setValues] = useState(initialValues);
-
-  function setValue(key, value) {
-    setValues({
-      ...values,
-      [key]: value,
-    });
-  }
-
-  function handleChange(eventInfo) {
-    setValue(
-      eventInfo.target.getAttribute('name'),
-      eventInfo.target.value,
-    );
-  }
 
   useEffect(() => {
 
-      const URL = window.location.href.includes('localhost') ? 'https://apache-prime.herokuapp.com/categorias' : 'http://localhost:8080/categorias'; 
-      fetch(URL)
-       .then(async (respostaDoServer) =>{
-        if(respostaDoServer.ok) {
+    const URL = window.location.href.includes('localhost')
+      ? 'http://localhost:8080/categorias'
+      : 'https://apache-prime.herokuapp.com/categorias';
+    fetch(URL)
+      .then(async (respostaDoServer) => {
+        if (respostaDoServer.ok) {
           const resposta = await respostaDoServer.json();
           setCategorias(resposta);
-          return; 
+          return;
         }
         throw new Error('Não foi possível pegar os dados');
-       })
-       
+      })
+
   }, []);
 
   return (
     <PageTemplate>
       <h1>
-        Cadastrar Categoria:
-        {values.nome}
+        {'Cadastrar '}
+        {values.titulo}
       </h1>
 
       <form onSubmit={function handleSubmit(evento) {
@@ -58,15 +49,15 @@ function CadastroCategoria() {
           values,
         ]);
 
-        setValues(initialValues);
+        clearForm();
       }}
       >
 
         <FormField
-          label="nome da categoria"
+          label="Título"
           type="text"
-          name="nome"
-          value={values.nome}
+          name="titulo"
+          value={values.titulo}
           onChange={handleChange}
         />
 
@@ -87,32 +78,31 @@ function CadastroCategoria() {
         />
 
         <Button
-           as="input"
-           type="submit"
-           value="Salvar"
-         />
+          as="input"
+          type="submit"
+          value="Salvar"
+        />
       </form>
 
       {categorias.length === 0 && (
-          <div>
-              CARREGANDO LISTA...
-          </div>
+        <div>
+          CARREGANDO LISTA...
+        </div>
       )}
 
-      <td>
-        {categorias.map((categoria, indice) => {
-          if (!categoria.nome) { return []; }
+      <ul>
+        {categorias.map((categoria) => {
+          if (!categoria.titulo) { return []; }
 
           return (
-            <tr key={`${categoria.nome}`}>
-              {categoria.nome}
-              {' -- '}
+            <li key={`${categoria.titulo}`}>
+              {categoria.titulo}
               {categoria.descricao}
-            </tr>
-            
+            </li>
+
           );
         })}
-      </td>
+      </ul>
 
       <br />
       <br />
