@@ -1,18 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import PageTemplate from '../../../components/PageTemplate';
 import useForm from '../../../hooks/useForm';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
-import videosRepository from '../../../repositories/videos'
+import videosRepository from '../../../repositories/videos';
+import categoriasRepository from '../../../repositories/categorias';
 
 function CadastroVideo() {
     const history = useHistory();
+    const [categorias, setCategorias] = useState([]);
+    const categoryTitles = categorias.map(({ titulo }) => titulo);
     const { handleChange, values } = useForm({
-        titulo: 'A Origem',
-        url: 'https://www.youtube.com/watch?v=HiixbtN-O24',
-        categoria: 'Filmes',
+        titulo: 'Video padrão',
+        url: 'https://www.youtube.com/watch?v=jOAU81jdi-c',
+        categoria: 'Front End',
     });
+
+    useEffect(() => {
+        categoriasRepository.getAll()
+            .then((categoriasFromServer) => {
+                setCategorias(categoriasFromServer);
+            });
+    }, []);
 
     return (
         <PageTemplate>
@@ -21,10 +31,17 @@ function CadastroVideo() {
             <form onSubmit={(event) => {
                 event.preventDefault();
 
+                const categoriaEscolhida = categorias.find((categoria) => {
+                    return categoria.titulo === values.categoria;
+                });
+
+
+                console.log('Categoria Escolhida: ', categoriaEscolhida);
+
                 videosRepository.create({
                     titulo: values.titulo,
                     url: values.url,
-                    categoriaId: 4,
+                    categoriaId: categoriaEscolhida.id,
                 }).then(() => {
                     history.push('/');
                     console.log('Sucesso ao cadastrar filme!')
@@ -50,6 +67,7 @@ function CadastroVideo() {
                     name="categoria"
                     value={values.categoria}
                     onChange={handleChange}
+                    suggestions={categoryTitles}
                 />
 
                 <Button type="submit">
