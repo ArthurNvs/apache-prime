@@ -71,7 +71,11 @@ background: #53585D;
 `;
 
 function FormField({
-    label, type, name, value, onChange,
+    label,
+    type,
+    name,
+    value,
+    onChange,
 }) {
     const fieldId = `id_${name}`;
     const isTextArea = type === 'textarea';

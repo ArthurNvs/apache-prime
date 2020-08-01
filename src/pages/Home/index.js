@@ -31,7 +31,7 @@ function Home() {
               <BannerMain
                 videoTitle={dadosIniciais[0].videos[0].titulo}
                 url={dadosIniciais[0].videos[0].url}
-                videoDescription={"Música e vídeo ao seu dispor"}
+                videoDescription={"Todo entretenimento a um toque de distância!"}
               />
 
               <Carousel
